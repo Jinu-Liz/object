@@ -19,16 +19,11 @@ public class Theater {
    * Theater은 관람객이 가방을 들고있고, 판매원이 매표소에서만 티켓을 판매한다는 가정 하에 동작한다.
    * 따라서 Audience가 가방을 들고있다는 가정이 변경되면 Theater도 변경해야 한다.
    * 즉, 의존성이 크다. (결합도가 높다.)
+   *
+   * 기존 enter의 로직을 ticketSeller로 이동시키면서 Theater은 TicketOffice의 존재를 알지 못한다.
+   * 그저 TicketSeller의 sellTo 메서드를 사용하기만 한다.
    */
   public void enter(Audience audience) {
-    if (audience.getBag().hasInvitation()) {
-      Ticket ticket = ticketSeller.getTicketOffice().getTicket();
-      audience.getBag().setTicket(ticket);
-    } else {
-      Ticket ticket = ticketSeller.getTicketOffice().getTicket();
-      audience.getBag().minusAmount(ticket.getFee());
-      ticketSeller.getTicketOffice().plusAmount(ticket.getFee());
-      audience.getBag().setTicket(ticket);
-    }
+    this.ticketSeller.sellTo(audience);
   }
 }
