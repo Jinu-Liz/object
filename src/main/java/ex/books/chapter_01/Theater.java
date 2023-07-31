@@ -1,4 +1,4 @@
-package books.chapter_01;
+package ex.books.chapter_01;
 
 public class Theater {
 

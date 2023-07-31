@@ -1,4 +1,4 @@
-package books.chapter_01;
+package ex.books.chapter_01;
 
 /**
  * Audience가 자신의 가방에서 초대장을 스스로 확인하도록 변경.

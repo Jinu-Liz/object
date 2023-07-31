@@ -1,4 +1,4 @@
-package books.chapter_01;
+package ex.books.chapter_01;
 
 /**
  * getTicketOffice 메서드가 제거되어 TicketSeller만 TicketOffice에 접근할 수 있음
