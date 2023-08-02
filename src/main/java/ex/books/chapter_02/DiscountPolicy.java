@@ -22,5 +22,11 @@ public abstract class DiscountPolicy {
     return Money.ZERO;
   }
 
+  /**
+   * DiscountPolicy는 할인 여부와 요금 계산에 필요한 전체적인 흐름은 정의하지만
+   * 실제 요금 계산 부분은 getDiscountAmount 메서드에 위임.
+   * 이처럼 부모 클래스에 기본 알고리즘의 흐름을 구현하고 중간에 필요한 처리를 자식 클래스에 위임하는 디자인 패턴이
+   * TEMPLATE METHOD 패턴.
+   */
   abstract protected Money getDiscountAmount(Screening screening);
 }
