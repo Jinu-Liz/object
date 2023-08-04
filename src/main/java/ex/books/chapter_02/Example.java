@@ -5,7 +5,7 @@ import ex.books.chapter_02.condition.SequenceContidion;
 import ex.books.chapter_02.entity.Money;
 import ex.books.chapter_02.entity.Movie;
 import ex.books.chapter_02.policy.AmountDefaultDiscountPolicy;
-import ex.books.chapter_02.policy.NonDefaultDiscountPolicy;
+import ex.books.chapter_02.policy.NoneDiscountPolicy;
 import ex.books.chapter_02.policy.PercentDefaultDiscountPolicy;
 
 import java.time.DayOfWeek;
@@ -57,5 +57,5 @@ public class Example {
   Movie starWars = new Movie("스타워즈",
     Duration.ofMinutes(210),
     Money.wons(10000),
-    new NonDefaultDiscountPolicy());
+    new NoneDiscountPolicy());
 }

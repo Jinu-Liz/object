@@ -1,6 +1,6 @@
 package ex.books.chapter_02.entity;
 
-import ex.books.chapter_02.policy.DefaultDiscountPolicy;
+import ex.books.chapter_02.policy.DiscountPolicy;
 import lombok.Data;
 
 import java.time.Duration;
@@ -14,9 +14,9 @@ public class Movie {
 
   private Money fee;
 
-  private DefaultDiscountPolicy defaultDiscountPolicy;
+  private DiscountPolicy defaultDiscountPolicy;
 
-  public Movie(String title, Duration runningTime, Money fee, DefaultDiscountPolicy defaultDiscountPolicy) {
+  public Movie(String title, Duration runningTime, Money fee, DiscountPolicy defaultDiscountPolicy) {
     this.title = title;
     this.runningTime = runningTime;
     this.fee = fee;
