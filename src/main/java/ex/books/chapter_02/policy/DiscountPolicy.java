@@ -1,4 +1,8 @@
-package ex.books.chapter_02;
+package ex.books.chapter_02.policy;
+
+import ex.books.chapter_02.condition.DiscountCondition;
+import ex.books.chapter_02.entity.Money;
+import ex.books.chapter_02.entity.Screening;
 
 import java.util.ArrayList;
 import java.util.Arrays;

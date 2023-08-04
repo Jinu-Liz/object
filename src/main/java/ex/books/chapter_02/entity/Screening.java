@@ -1,4 +1,4 @@
-package ex.books.chapter_02;
+package ex.books.chapter_02.entity;
 
 import java.time.LocalDateTime;
 

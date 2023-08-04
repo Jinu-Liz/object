@@ -1,5 +1,12 @@
 package ex.books.chapter_02;
 
+import ex.books.chapter_02.condition.PeriodCondition;
+import ex.books.chapter_02.condition.SequenceContidion;
+import ex.books.chapter_02.entity.Money;
+import ex.books.chapter_02.entity.Movie;
+import ex.books.chapter_02.policy.AmountDiscountPolicy;
+import ex.books.chapter_02.policy.PercentDiscountPolicy;
+
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalTime;
