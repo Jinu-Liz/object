@@ -1,6 +1,6 @@
 package ex.books.chapter_02.entity;
 
-import ex.books.chapter_02.policy.DiscountPolicy;
+import ex.books.chapter_02.policy.DefaultDiscountPolicy;
 import lombok.Data;
 
 import java.time.Duration;
@@ -14,13 +14,13 @@ public class Movie {
 
   private Money fee;
 
-  private DiscountPolicy discountPolicy;
+  private DefaultDiscountPolicy defaultDiscountPolicy;
 
-  public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
+  public Movie(String title, Duration runningTime, Money fee, DefaultDiscountPolicy defaultDiscountPolicy) {
     this.title = title;
     this.runningTime = runningTime;
     this.fee = fee;
-    this.discountPolicy = discountPolicy;
+    this.defaultDiscountPolicy = defaultDiscountPolicy;
   }
 
   public Money calculateMovieFee(Screening screening) {
@@ -30,6 +30,6 @@ public class Movie {
      * 따라서 책임의 위치를 결정하기 위해 조건문을 사용하는 것은 협력의 설계 측면에서 대체로 옳지 않은 선택이다.
      * 항상 예외 케이스를 최소화하고 일관성을 유지할 수 있는 방법을 선택해야한다.
      */
-    return (discountPolicy != null) ? fee.minus(discountPolicy.calculateDiscountAmount(screening)) : fee;
+    return (defaultDiscountPolicy != null) ? fee.minus(defaultDiscountPolicy.calculateDiscountAmount(screening)) : fee;
   }
 }

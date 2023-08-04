@@ -7,11 +7,11 @@ import ex.books.chapter_02.entity.Screening;
 /**
  * 일정 비율 할인 정책
  */
-public class PercentDiscountPolicy extends DiscountPolicy {
+public class PercentDefaultDiscountPolicy extends DefaultDiscountPolicy {
 
   private double percent;
 
-  public PercentDiscountPolicy(double percent, DiscountCondition... conditions) {
+  public PercentDefaultDiscountPolicy(double percent, DiscountCondition... conditions) {
     super(conditions);
     this.percent = percent;
   }

@@ -4,9 +4,9 @@ import ex.books.chapter_02.condition.PeriodCondition;
 import ex.books.chapter_02.condition.SequenceContidion;
 import ex.books.chapter_02.entity.Money;
 import ex.books.chapter_02.entity.Movie;
-import ex.books.chapter_02.policy.AmountDiscountPolicy;
-import ex.books.chapter_02.policy.NonDiscountPolicy;
-import ex.books.chapter_02.policy.PercentDiscountPolicy;
+import ex.books.chapter_02.policy.AmountDefaultDiscountPolicy;
+import ex.books.chapter_02.policy.NonDefaultDiscountPolicy;
+import ex.books.chapter_02.policy.PercentDefaultDiscountPolicy;
 
 import java.time.DayOfWeek;
 import java.time.Duration;
@@ -21,7 +21,7 @@ public class Example {
     Movie avatar = new Movie("아바타",
       Duration.ofMinutes(120),
       Money.wons(10000),
-      new AmountDiscountPolicy(Money.wons(800),
+      new AmountDefaultDiscountPolicy(Money.wons(800),
         new SequenceContidion(1),
         new SequenceContidion(10),
         new PeriodCondition(DayOfWeek.MONDAY, LocalTime.of(10, 0), LocalTime.of(11, 59)),
@@ -35,7 +35,7 @@ public class Example {
     Movie titanic = new Movie("타이타닉",
       Duration.ofMinutes(180),
       Money.wons(11000),
-      new PercentDiscountPolicy(0.1,
+      new PercentDefaultDiscountPolicy(0.1,
         new PeriodCondition(DayOfWeek.TUESDAY, LocalTime.of(14, 0), LocalTime.of(16, 59)),
         new SequenceContidion(2),
         new PeriodCondition(DayOfWeek.THURSDAY, LocalTime.of(10, 0), LocalTime.of(13, 59)))
@@ -57,5 +57,5 @@ public class Example {
   Movie starWars = new Movie("스타워즈",
     Duration.ofMinutes(210),
     Money.wons(10000),
-    new NonDiscountPolicy());
+    new NonDefaultDiscountPolicy());
 }
