@@ -5,6 +5,7 @@ import ex.books.chapter_02.condition.SequenceContidion;
 import ex.books.chapter_02.entity.Money;
 import ex.books.chapter_02.entity.Movie;
 import ex.books.chapter_02.policy.AmountDiscountPolicy;
+import ex.books.chapter_02.policy.NonDiscountPolicy;
 import ex.books.chapter_02.policy.PercentDiscountPolicy;
 
 import java.time.DayOfWeek;
@@ -47,4 +48,14 @@ public class Example {
    * 따라서 코드의 의존성과 실행 시점의 의존성이 서도 다를 수 있다는 것.
    * -> 클래스 사이의 의존성과 객체 사이의 의존성은 동일하지 않을 수 있다.
    */
+
+
+  /**
+   * NonDiscountPolicy라는 클래스를 추가하여 할인되지 않는 영화를 생성할 수 있게 됨.
+   * 즉, 새로운 클래스를 추가하는 것만으로 애플리케이션의 기능을 확장.
+   */
+  Movie starWars = new Movie("스타워즈",
+    Duration.ofMinutes(210),
+    Money.wons(10000),
+    new NonDiscountPolicy());
 }
