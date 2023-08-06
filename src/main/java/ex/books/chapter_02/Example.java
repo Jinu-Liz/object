@@ -59,3 +59,9 @@ public class Example {
     Money.wons(10000),
     new NoneDiscountPolicy());
 }
+
+
+/**
+ * 객체는 여러가지 역할을 가질 수 있지만
+ * 협력 안에서는 한가지 역할만을 가진다.
+ */
