@@ -1,6 +1,5 @@
 package ex.books.chapter_04;
 
-import ex.books.chapter_02.condition.DiscountCondition;
 import ex.books.chapter_02.entity.Money;
 
 import java.time.Duration;
