@@ -5,6 +5,12 @@ import ex.books.chapter_02.entity.Money;
 import java.time.Duration;
 import java.util.List;
 
+/**
+ * 데이터 중심으로 설계한 Movie를 보면 getter/setter를 통해서만 객체 내부 상태에 접근할 수 있다.
+ * 따라서 캡슐화의 원칙을 지키고 있는 것처럼 보이지만 Movie 내부에 해당 타입의 변수가 존재한다는 사실을 노골적으로 드러낸다.
+ * (ex: getFee와 setFee는 Money 타입의 fee라는 이름의 변수가 존재한다는 것을 드러냄)
+ * 이는 객체가 수행할 책임이 아니라 내부에 저장할 데이터에 초첨을 맞추었기 때문에 발생한다.
+ */
 public class Movie {
 
   private String title;
