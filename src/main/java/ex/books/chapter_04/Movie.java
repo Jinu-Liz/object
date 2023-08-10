@@ -3,7 +3,11 @@ package ex.books.chapter_04;
 import ex.books.chapter_02.entity.Money;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
+
+import static ex.books.chapter_04.DiscountConditionType.*;
+import static ex.books.chapter_04.MovieType.*;
 
 /**
  * 데이터 중심으로 설계한 Movie를 보면 getter/setter를 통해서만 객체 내부 상태에 접근할 수 있다.
@@ -81,5 +85,35 @@ public class Movie {
 
   public void setDiscountPercent(double discountPercent) {
     this.discountPercent = discountPercent;
+  }
+
+  public Money calculateAmountDiscountedFee() {
+    if (movieType != AMOUNT_DISCOUNT) throw new IllegalArgumentException();
+
+    return fee.minus(discountAmount);
+  }
+
+  public Money calculatePercentDiscountedFee() {
+    if (movieType != PERCENT_DISCOUNT) throw new IllegalArgumentException();
+
+    return fee.minus(fee.times(discountPercent));
+  }
+
+  public Money calculateNoneDiscountedFee() {
+    if (movieType != NONE_DISCOUNT) throw new IllegalArgumentException();
+
+    return fee;
+  }
+
+  public boolean isDiscountable(LocalDateTime whenScreened, int sequence) {
+    for (DiscountCondition condition : discountConditions) {
+      if (condition.getType() == PERIOD) {
+        if (condition.isDiscountable(whenScreened.getDayOfWeek(), whenScreened.toLocalTime())) return true;
+      } else {
+        if (condition.isDiscountable(sequence)) return true;
+      }
+    }
+
+    return false;
   }
 }

@@ -3,6 +3,8 @@ package ex.books.chapter_04;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
+import static ex.books.chapter_04.DiscountConditionType.*;
+
 public class DiscountCondition {
 
   private DiscountConditionType type;
@@ -53,5 +55,19 @@ public class DiscountCondition {
 
   public void setEndTime(LocalTime endTime) {
     this.endTime = endTime;
+  }
+
+  public boolean isDiscountable(DayOfWeek dayOfWeek, LocalTime time) {
+    if (type != PERIOD) throw new IllegalArgumentException();
+
+    return this.dayOfWeek.equals(dayOfWeek) &&
+      !this.startTime.isAfter(time) &&
+      !this.endTime.isBefore(time);
+  }
+
+  public boolean isDiscountable(int sequence) {
+    if (type != SEQUENCE) throw new IllegalArgumentException();
+
+    return this.sequence == sequence;
   }
 }
