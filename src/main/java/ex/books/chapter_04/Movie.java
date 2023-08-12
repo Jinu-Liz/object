@@ -87,6 +87,10 @@ public class Movie {
     this.discountPercent = discountPercent;
   }
 
+  /**
+   * 할인 정책에 금액할인, 비율 할인, 미적용의 세 가지가 존재한다는 사실을 드러내고 있다.
+   * 만약 새로운 할인 정책이 추가되거나 제거된다면 해당 메서드들에 의존하는 모든 클라이언트가 영향을 받을 것이다.
+   */
   public Money calculateAmountDiscountedFee() {
     if (movieType != AMOUNT_DISCOUNT) throw new IllegalArgumentException();
 

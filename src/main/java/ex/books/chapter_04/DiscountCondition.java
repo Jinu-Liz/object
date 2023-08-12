@@ -57,6 +57,10 @@ public class DiscountCondition {
     this.endTime = endTime;
   }
 
+  /**
+   * 해당 메서드는 객체 내부에 DayOfWeek 타입의 요일과 LocalTime 타입의 시간 정보가
+   * 인스턴스 변수로 포함돼있다는 사실을 인터페이스를 통해 외부에 노출하고 있다.
+   */
   public boolean isDiscountable(DayOfWeek dayOfWeek, LocalTime time) {
     if (type != PERIOD) throw new IllegalArgumentException();
 
