@@ -1,6 +1,7 @@
 package ex.books.chapter_02.entity;
 
 import ex.books.chapter_02.policy.DiscountPolicy;
+import ex.books.common.Money;
 import lombok.Data;
 
 import java.time.Duration;

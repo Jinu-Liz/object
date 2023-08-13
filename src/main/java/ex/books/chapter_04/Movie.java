@@ -1,6 +1,6 @@
 package ex.books.chapter_04;
 
-import ex.books.chapter_02.entity.Money;
+import ex.books.common.Money;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

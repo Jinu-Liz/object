@@ -1,4 +1,4 @@
-package ex.books.chapter_02.entity;
+package ex.books.common;
 
 import java.math.BigDecimal;
 

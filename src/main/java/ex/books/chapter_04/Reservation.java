@@ -1,7 +1,7 @@
 package ex.books.chapter_04;
 
 import ex.books.chapter_02.entity.Customer;
-import ex.books.chapter_02.entity.Money;
+import ex.books.common.Money;
 
 public class Reservation {
 

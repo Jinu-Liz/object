@@ -1,5 +1,7 @@
 package ex.books.chapter_02.entity;
 
+import ex.books.common.Money;
+
 import java.time.LocalDateTime;
 
 public class Screening {

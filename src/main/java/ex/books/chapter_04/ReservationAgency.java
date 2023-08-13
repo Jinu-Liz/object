@@ -1,7 +1,7 @@
 package ex.books.chapter_04;
 
 import ex.books.chapter_02.entity.Customer;
-import ex.books.chapter_02.entity.Money;
+import ex.books.common.Money;
 
 /**
  * 대부분의 제어 로직을 가지고 있는 제어 객체인 ReservationAgency는 모든 데이터 객체에 의존한다.

@@ -2,7 +2,7 @@ package ex.books.chapter_02;
 
 import ex.books.chapter_02.condition.PeriodCondition;
 import ex.books.chapter_02.condition.SequenceContidion;
-import ex.books.chapter_02.entity.Money;
+import ex.books.common.Money;
 import ex.books.chapter_02.entity.Movie;
 import ex.books.chapter_02.policy.AmountDefaultDiscountPolicy;
 import ex.books.chapter_02.policy.NoneDiscountPolicy;
