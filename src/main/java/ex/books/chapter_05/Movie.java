@@ -33,6 +33,8 @@ public class Movie {
       case PERCENT_DISCOUNT -> calculatePercentDiscountAmount();
       case NONE_DISCOUNT -> calculateNoneDiscountAmount();
     }
+
+    throw new IllegalArgumentException();
   }
 
   private boolean isDiscountable(Screening screening) {
