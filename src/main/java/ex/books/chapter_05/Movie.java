@@ -13,7 +13,12 @@ public class Movie {
 
   private Money fee;
 
-  private List<DiscountCondition> discountConditions;
+  /**
+   * DCCondition은 Movie로부터 PeriodCondition과 SequenceCondition의 존재를 감춘다.
+   * 즉, 캡슐화를 시킴으로써 새로운 DCCondition 타입을 추가하더라도 Movie가 영향을 받지 않는다.
+   * 이처럼 변경을 캡슐화하도록 책임을 할당하는 것을 PROTECTED VARIATIONS(변경 보호) 패턴이라고 부른다.
+   */
+  private List<DCCondition> discountConditions;
 
   private MovieType movieType;
 
@@ -42,7 +47,8 @@ public class Movie {
   }
 
   private boolean isDiscountable(Screening screening) {
-    return checkPeriodConditions(screening) || checkSequenceConditions(screening);
+    return discountConditions.stream()
+            .anyMatch(condition -> condition.isSatisfiedBy(screening));
   }
 
   private Money calculateAmountDiscountAmount() {
@@ -68,7 +74,7 @@ public class Movie {
    */
   private boolean checkPeriodConditions(Screening screening) {
     return periodConditions.stream()
-      .anyMatch(condition -> condition.isSatidfiedBy(screening));
+      .anyMatch(condition -> condition.isSatisfiedBy(screening));
   }
 
   private boolean checkSequenceConditions(Screening screening) {
