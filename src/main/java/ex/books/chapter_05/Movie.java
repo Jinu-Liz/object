@@ -51,6 +51,10 @@ public abstract class Movie {
 
   abstract protected Money calculateDiscountAmount();
 
+  protected Money getFee() {
+    return this.fee;
+  }
+
   /**
    * conditions가 나눠지면서, Movie가 협력해야하는 클래스가 두 개로 나위어졌다. (DiscountCondition -> SequenceCondition, PeriodCondition)
    * 가장 쉽게 해당 문제를 해결하는 방법은 각 클래스들의 목록을 별도로 유지하는 것이다.
