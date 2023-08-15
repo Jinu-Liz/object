@@ -3,9 +3,10 @@ package ex.books.chapter_05;
 import ex.books.common.Money;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 
-public class Movie {
+public abstract class Movie {
 
   private String title;
 
@@ -26,9 +27,16 @@ public class Movie {
 
   private double discountPercent;
 
-  private List<PeriodCondition> periodConditions;
+//  private List<PeriodCondition> periodConditions;
+//
+//  private List<SequenceCondition> sequenceConditions;
 
-  private List<SequenceCondition> sequenceConditions;
+  public Movie(String title, Duration runningTime, Money fee, DCCondition... discountConditions) {
+    this.title = title;
+    this.runningTime = runningTime;
+    this.fee = fee;
+    this.discountConditions = List.of(discountConditions);
+  }
 
   public Money calculateMovieFee(Screening screening) {
     if (isDiscountable(screening)) return fee.minus(calculateDiscountAmount());
@@ -36,32 +44,12 @@ public class Movie {
     return fee;
   }
 
-  private Money calculateDiscountAmount() {
-    switch (movieType) {
-      case AMOUNT_DISCOUNT -> calculateAmountDiscountAmount();
-      case PERCENT_DISCOUNT -> calculatePercentDiscountAmount();
-      case NONE_DISCOUNT -> calculateNoneDiscountAmount();
-    }
-
-    throw new IllegalArgumentException();
-  }
-
   private boolean isDiscountable(Screening screening) {
     return discountConditions.stream()
             .anyMatch(condition -> condition.isSatisfiedBy(screening));
   }
 
-  private Money calculateAmountDiscountAmount() {
-    return discountAmount;
-  }
-
-  private Money calculatePercentDiscountAmount() {
-    return fee.times(discountPercent);
-  }
-
-  private Money calculateNoneDiscountAmount() {
-    return Money.ZERO;
-  }
+  abstract protected Money calculateDiscountAmount();
 
   /**
    * conditions가 나눠지면서, Movie가 협력해야하는 클래스가 두 개로 나위어졌다. (DiscountCondition -> SequenceCondition, PeriodCondition)
@@ -72,13 +60,13 @@ public class Movie {
    * 이후, List를 이용하여 할인 조건을 만족하는지 여부를 판단하는 메서드도 추가해야한다.
    * 마지막으로 이 메서드를 호출하도록 isDiscountable 메서드를 수정해야 한다.
    */
-  private boolean checkPeriodConditions(Screening screening) {
-    return periodConditions.stream()
-      .anyMatch(condition -> condition.isSatisfiedBy(screening));
-  }
-
-  private boolean checkSequenceConditions(Screening screening) {
-    return sequenceConditions.stream()
-      .anyMatch(condition -> condition.isSatisfiedBy(screening));
-  }
+//  private boolean checkPeriodConditions(Screening screening) {
+//    return periodConditions.stream()
+//      .anyMatch(condition -> condition.isSatisfiedBy(screening));
+//  }
+//
+//  private boolean checkSequenceConditions(Screening screening) {
+//    return sequenceConditions.stream()
+//      .anyMatch(condition -> condition.isSatisfiedBy(screening));
+//  }
 }
