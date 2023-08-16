@@ -32,6 +32,16 @@ public class DiscountCondition {
 
   private LocalTime endTime;
 
+  /**
+   * 해당 메서드가 ReservationAgency에 속할 때는 구현의 일부였지만
+   * DiscountCondition으로 이동한 후에는 퍼블릭 인터페이스의 일부가 되었다.
+   */
+  public boolean isDiscountable(Screening screening) {
+    if (this.type == DiscountConditionType.PERIOD) return isSatisfiedByPeriod(screening);
+
+    return isSatisfiedBySequence(screening);
+  }
+
   public boolean isSatisfiedBy(Screening screening) {
     if (type == DiscountConditionType.PERIOD) {
       return isSatisfiedBy(screening);

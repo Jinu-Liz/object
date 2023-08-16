@@ -52,13 +52,7 @@ public class ReservationAgency {
 
   private boolean checkDiscountable(Screening screening) {
     return screening.getMovie().getDiscountConditions().stream()
-      .anyMatch(condition -> isDiscountable(condition, screening));
-  }
-
-  private boolean isDiscountable(DiscountCondition condition, Screening screening) {
-    if (condition.getType() == DiscountConditionType.PERIOD) return isSatisfiedByPeriod(condition, screening);
-
-    return isSatisfiedBySequence(condition, screening);
+      .anyMatch(condition -> condition.isDiscountable(screening));
   }
 
   private boolean isSatisfiedByPeriod(DiscountCondition condition, Screening screening) {
