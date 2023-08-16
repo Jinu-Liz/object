@@ -1,23 +1,22 @@
 package ex.books.chapter_05;
 
-import ex.books.chapter_02.entity.Customer;
-import ex.books.chapter_04.DiscountCondition;
 import ex.books.chapter_04.DiscountConditionType;
-import ex.books.chapter_04.Movie;
-import ex.books.chapter_04.Reservation;
-import ex.books.chapter_04.Screening;
 import ex.books.common.Money;
 
+/**
+ * 객체로 책임을 분배할 때 가장 먼저 할 일은 메서드를 응집도 있는 수준으로 분해하는 것이다.
+ * 작고 응집도 높은 메서드로 분리하면 각 메서드를 적절한 클래스로 이동하기가 더 수월해지기 때문ㅇ다.
+ */
 public class ReservationAgency {
 
-  public ex.books.chapter_04.Reservation reserve(ex.books.chapter_04.Screening screening, Customer customer, int audienceCount) {
+  public Reservation reserve(Screening screening, Customer customer, int audienceCount) {
     boolean discountable = checkDiscountable(screening);
     Money fee = calculateFee(screening, discountable, audienceCount);
 
     return createReservation(screening, customer, audienceCount, fee);
   }
 
-  private Money calculateFee(ex.books.chapter_04.Screening screening, boolean discountable, int audienceCount) {
+  private Money calculateFee(Screening screening, boolean discountable, int audienceCount) {
     if (discountable) {
       return screening.getMovie().getFee()
         .minus(calculateDiscountedFee(screening.getMovie()))
@@ -27,7 +26,7 @@ public class ReservationAgency {
     return screening.getMovie().getFee().times(audienceCount);
   }
 
-  private Money calculateDiscountedFee(ex.books.chapter_04.Movie movie) {
+  private Money calculateDiscountedFee(Movie movie) {
     switch (movie.getMovieType()) {
       case AMOUNT_DISCOUNT -> calculateAmountDiscountedFee(movie);
 
@@ -39,11 +38,11 @@ public class ReservationAgency {
     throw new IllegalArgumentException();
   }
 
-  private Money calculateNoneDiscountedFee(ex.books.chapter_04.Movie movie) {
+  private Money calculateNoneDiscountedFee(Movie movie) {
     return Money.ZERO;
   }
 
-  private Money calculatePercentDiscountedFee(ex.books.chapter_04.Movie movie) {
+  private Money calculatePercentDiscountedFee(Movie movie) {
     return movie.getFee().times(movie.getDiscountPercent());
   }
 
@@ -51,28 +50,28 @@ public class ReservationAgency {
     return movie.getDiscountAmount();
   }
 
-  private boolean checkDiscountable(ex.books.chapter_04.Screening screening) {
+  private boolean checkDiscountable(Screening screening) {
     return screening.getMovie().getDiscountConditions().stream()
       .anyMatch(condition -> isDiscountable(condition, screening));
   }
 
-  private boolean isDiscountable(ex.books.chapter_04.DiscountCondition condition, ex.books.chapter_04.Screening screening) {
+  private boolean isDiscountable(DiscountCondition condition, Screening screening) {
     if (condition.getType() == DiscountConditionType.PERIOD) return isSatisfiedByPeriod(condition, screening);
 
     return isSatisfiedBySequence(condition, screening);
   }
 
-  private boolean isSatisfiedByPeriod(ex.books.chapter_04.DiscountCondition condition, ex.books.chapter_04.Screening screening) {
+  private boolean isSatisfiedByPeriod(DiscountCondition condition, Screening screening) {
     return screening.getWhenScreened().getDayOfWeek().equals(condition.getDayOfWeek()) &&
       !condition.getStartTime().isAfter(screening.getWhenScreened().toLocalTime()) &&
       !condition.getEndTime().isBefore(screening.getWhenScreened().toLocalTime());
   }
 
-  private boolean isSatisfiedBySequence(DiscountCondition condition, ex.books.chapter_04.Screening screening) {
+  private boolean isSatisfiedBySequence(DiscountCondition condition, Screening screening) {
     return condition.getSequence() == screening.getSequence();
   }
 
-  private ex.books.chapter_04.Reservation createReservation(Screening screening, Customer customer, int audienceCount, Money fee) {
+  private Reservation createReservation(Screening screening, Customer customer, int audienceCount, Money fee) {
     return new Reservation(customer, screening, fee, audienceCount);
   }
 

@@ -1,6 +1,8 @@
 package ex.books.chapter_05;
 
 import ex.books.chapter_04.DiscountConditionType;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -16,6 +18,8 @@ import java.time.LocalTime;
  * 첫 번째 방법은 인스턴스 변수가 초기화되는 시점 살펴보고, 함께 초기화되는 속성을 기준으로 코드를 분리해야 한다.
  * 두 번째 방법은 메서드들이 인스턴스 변수를 사용하는 방식을 보고, 속성 그룹과 해당 그룹에 접근하는 메서드 그룹을 기준으로 코드를 분리해야 한다.
  */
+@Getter
+@Setter
 public class DiscountCondition {
 
   private DiscountConditionType type;

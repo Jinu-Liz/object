@@ -1,11 +1,14 @@
 package ex.books.chapter_05;
 
 import ex.books.common.Money;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.List;
 
+@Getter
+@Setter
 public abstract class Movie {
 
   private String title;
@@ -19,7 +22,9 @@ public abstract class Movie {
    * 즉, 캡슐화를 시킴으로써 새로운 DCCondition 타입을 추가하더라도 Movie가 영향을 받지 않는다.
    * 이처럼 변경을 캡슐화하도록 책임을 할당하는 것을 PROTECTED VARIATIONS(변경 보호) 패턴이라고 부른다.
    */
-  private List<DCCondition> discountConditions;
+  private List<DCCondition> dcConditions;
+
+  private List<DiscountCondition> discountConditions;
 
   private MovieType movieType;
 
@@ -31,11 +36,11 @@ public abstract class Movie {
 //
 //  private List<SequenceCondition> sequenceConditions;
 
-  public Movie(String title, Duration runningTime, Money fee, DCCondition... discountConditions) {
+  public Movie(String title, Duration runningTime, Money fee, DCCondition... dcConditions) {
     this.title = title;
     this.runningTime = runningTime;
     this.fee = fee;
-    this.discountConditions = List.of(discountConditions);
+    this.dcConditions = List.of(dcConditions);
   }
 
   public Money calculateMovieFee(Screening screening) {
@@ -45,7 +50,7 @@ public abstract class Movie {
   }
 
   private boolean isDiscountable(Screening screening) {
-    return discountConditions.stream()
+    return dcConditions.stream()
             .anyMatch(condition -> condition.isSatisfiedBy(screening));
   }
 
