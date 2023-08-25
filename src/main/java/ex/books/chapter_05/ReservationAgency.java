@@ -1,6 +1,10 @@
 package ex.books.chapter_05;
 
-import ex.books.chapter_04.DiscountConditionType;
+import ex.books.chapter_05.condition.DiscountCondition;
+import ex.books.chapter_05.entity.Customer;
+import ex.books.chapter_05.entity.Movie;
+import ex.books.chapter_05.entity.Reservation;
+import ex.books.chapter_05.entity.Screening;
 import ex.books.common.Money;
 
 /**

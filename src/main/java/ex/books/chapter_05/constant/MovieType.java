@@ -1,4 +1,4 @@
-package ex.books.chapter_05;
+package ex.books.chapter_05.constant;
 
 public enum MovieType {
   AMOUNT_DISCOUNT,    // 금액 할인 정책

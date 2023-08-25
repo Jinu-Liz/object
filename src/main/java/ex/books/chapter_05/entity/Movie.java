@@ -1,5 +1,8 @@
-package ex.books.chapter_05;
+package ex.books.chapter_05.entity;
 
+import ex.books.chapter_05.condition.DCCondition;
+import ex.books.chapter_05.condition.DiscountCondition;
+import ex.books.chapter_05.constant.MovieType;
 import ex.books.common.Money;
 import lombok.Getter;
 import lombok.Setter;
@@ -56,7 +59,7 @@ public abstract class Movie {
 
   abstract protected Money calculateDiscountAmount();
 
-  protected Money getFee() {
+  public Money getFee() {
     return this.fee;
   }
 

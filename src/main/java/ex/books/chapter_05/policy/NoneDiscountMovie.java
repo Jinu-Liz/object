@@ -1,5 +1,6 @@
-package ex.books.chapter_05;
+package ex.books.chapter_05.policy;
 
+import ex.books.chapter_05.entity.Movie;
 import ex.books.common.Money;
 
 import java.time.Duration;

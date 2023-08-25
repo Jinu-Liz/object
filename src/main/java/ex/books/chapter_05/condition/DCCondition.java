@@ -1,4 +1,6 @@
-package ex.books.chapter_05;
+package ex.books.chapter_05.condition;
+
+import ex.books.chapter_05.entity.Screening;
 
 /**
  * 역할을 사용하여 객체의 구체적인 타입을 추상화한다.

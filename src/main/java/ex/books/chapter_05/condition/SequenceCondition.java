@@ -1,4 +1,7 @@
-package ex.books.chapter_05;
+package ex.books.chapter_05.condition;
+
+import ex.books.chapter_05.condition.DCCondition;
+import ex.books.chapter_05.entity.Screening;
 
 /**
  * 클래스를 분리함으로써 모든 인스턴스 변수를 함께 초기화하고, 동일한 인스턴스 변수 그룹을 사용하게 됐다.

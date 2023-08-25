@@ -1,4 +1,4 @@
-package ex.books.chapter_05;
+package ex.books.chapter_05.entity;
 
 import ex.books.common.Money;
 

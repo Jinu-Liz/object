@@ -1,6 +1,7 @@
-package ex.books.chapter_05;
+package ex.books.chapter_05.condition;
 
 import ex.books.chapter_04.DiscountConditionType;
+import ex.books.chapter_05.entity.Screening;
 import lombok.Getter;
 import lombok.Setter;
 

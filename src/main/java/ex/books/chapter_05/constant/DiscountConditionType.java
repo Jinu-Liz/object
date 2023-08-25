@@ -1,4 +1,4 @@
-package ex.books.chapter_05;
+package ex.books.chapter_05.constant;
 
 public enum DiscountConditionType {
   SEQUENCE,   // 순번 조건

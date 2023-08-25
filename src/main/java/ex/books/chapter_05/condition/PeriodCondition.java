@@ -1,4 +1,6 @@
-package ex.books.chapter_05;
+package ex.books.chapter_05.condition;
+
+import ex.books.chapter_05.entity.Screening;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
