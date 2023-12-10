@@ -1,10 +1,15 @@
 package ex.books.chapter_08;
 
+import ex.books.chapter_08.condition.PeriodCondition;
+import ex.books.chapter_08.condition.SequenceCondition;
 import ex.books.chapter_08.policy.AmountDiscountPolicy;
+import ex.books.chapter_08.policy.DiscountPolicy;
 import ex.books.chapter_08.policy.PercentDiscountPolicy;
 import ex.books.common.Money;
 
+import java.time.DayOfWeek;
 import java.time.Duration;
+import java.time.LocalTime;
 
 public class Example {
   public static void main(String[] args) {
@@ -57,4 +62,38 @@ public class Example {
     Movie movie2 = new Movie();
     movie2.calculateMovieFee(new Screening(), new PercentDiscountPolicy());
   }
+
+
+  /**
+   * 사용과 생성의 책임을 분리하여 결합도를 낮추면 설계를 유연하게 만들 수 있다.
+   * 생성의 책임을 클라이언트로 옮김으로써 DiscountPolicy의 모든 자식 클래스와 협력할 수 있게 됐다.
+   */
+  SequenceCondition sequenceCondition1 = new SequenceCondition(1);
+  SequenceCondition sequenceCondition2 = new SequenceCondition(10);
+  PeriodCondition periodCondition1 = new PeriodCondition(
+    DayOfWeek.MONDAY,
+    LocalTime.of(10, 0),
+    LocalTime.of(11, 59)
+  );
+
+  PeriodCondition periodCondition2 = new PeriodCondition(
+    DayOfWeek.TUESDAY,
+    LocalTime.of(10, 0),
+    LocalTime.of(20, 59)
+  );
+
+  DiscountPolicy discountPolicy = new AmountDiscountPolicy(
+    Money.wons(800),
+    sequenceCondition1,
+    sequenceCondition2,
+    periodCondition1,
+    periodCondition2
+  );
+
+  Movie avatar = new Movie(
+    "아바타",
+    Duration.ofMinutes(20),
+    Money.wons(10000),
+    discountPolicy
+  );
 }
