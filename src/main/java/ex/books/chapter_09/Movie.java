@@ -24,6 +24,7 @@ public class Movie {
     this.title = title;
     this.runningTime = runningTime;
     this.fee = fee;
+    this.discountPolicy = ServiceLocator.discountPolicy();
   }
 
   public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
