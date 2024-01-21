@@ -1,5 +1,6 @@
-package ex.books.chapter_10;
+package ex.books.chapter_10.before;
 
+import ex.books.chapter_10.Call;
 import ex.books.common.Money;
 
 import java.time.Duration;
@@ -60,7 +61,7 @@ public class NightlyDiscountPhone {
   public Money calculateFee() {
     Money result = Money.ZERO;
 
-    for (Call call : calls) {
+    for (Call call : this.calls) {
       if (call.getFrom().getHour() >= LATE_NIGHT_HOUR) {
         result = result.plus(
           this.nightlyAmount.times(call.getDuration().getSeconds() / this.seconds.getSeconds())

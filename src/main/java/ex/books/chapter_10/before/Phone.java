@@ -1,5 +1,6 @@
-package ex.books.chapter_10;
+package ex.books.chapter_10.before;
 
+import ex.books.chapter_10.Call;
 import ex.books.common.Money;
 import lombok.Getter;
 
@@ -36,7 +37,7 @@ public class Phone {
   public Money calculateFee() {
     Money result = Money.ZERO;
 
-    for (Call call : calls) {
+    for (Call call : this.calls) {
       result = result.plus(this.amount.times(call.getDuration().getSeconds() / this.seconds.getSeconds()));
     }
 
