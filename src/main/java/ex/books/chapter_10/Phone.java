@@ -14,11 +14,19 @@ public class Phone {
 
   private Duration seconds;
 
+  private double taxRate;
+
   private List<Call> calls = new ArrayList<>();
 
   public Phone(Money amount, Duration seconds) {
     this.amount = amount;
     this.seconds = seconds;
+  }
+
+  public Phone(Money amount, Duration seconds, double taxRate) {
+    this.amount = amount;
+    this.seconds = seconds;
+    this.taxRate = taxRate;
   }
 
   public void call(Call call) {
@@ -32,6 +40,6 @@ public class Phone {
       result = result.plus(this.amount.times(call.getDuration().getSeconds() / this.seconds.getSeconds()));
     }
 
-    return result;
+    return result.plus(result.times(this.taxRate));
   }
 }
