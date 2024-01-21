@@ -27,12 +27,20 @@ public class Phone {
 
   private Money nightlyAmount;
 
+  private double taxRate;
+
   private Duration seconds;
 
   private List<Call> calls = new ArrayList<>();
 
   public Phone(Money amount, Duration seconds) {
     this(PhoneType.REGULAR, amount, Money.ZERO, Money.ZERO, seconds);
+  }
+
+  public Phone(Money amount, Duration seconds, double taxRate) {
+    this.amount = amount;
+    this.taxRate = taxRate;
+    this.seconds = seconds;
   }
 
   public Phone(Money regularAmount, Money nightlyAmount, Duration seconds) {
@@ -68,6 +76,6 @@ public class Phone {
       }
     }
 
-    return result;
+    return result.plus(result.times(this.taxRate));
   }
 }

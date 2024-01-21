@@ -12,6 +12,17 @@ import java.util.List;
  * 상속을 이용하여 코드를 복사하지 않고 코드를 재사용할 수 있다.
  * NightlyDiscountPhone 클래스가 Phone 클래스를 상속받게 만들면
  * 코드를 중복시키지 않고도 코드 대부분을 재사용할 수 있다.
+ *
+ * NightlyDiscountPhone를 Phone의 자식 클래스로 만든 이유는
+ * Phone의 코드를 재사용하고 중복 코드를 제거하기 위해서다.
+ * 하지만 세금을 부과하는 로직을 추가하기 위해 유사한 코드를 NightlyDiscountPhone에도 추가해야 했다.
+ * 즉, 중복을 제거하기 위해 상속을 사용했음에도 새로운 중복 코드를 만들어야하는 것이다.
+ *
+ * 자식 클래스의 메서드 안에서 super 참조를 이용해 부모 클래스의 메서드를 직접 호출할 경우,
+ * 두 클래스는 강하게 결합된다. super 호출을 제거할 수 있는 방법을 찾아 결합도를 제거해야한다.
+ *
+ * 이처럼 상속 관계로 연결된 자식 클래스가 부모 클래스의 변경에 취약해지는 현상을 가리켜
+ * '취약한 기반 클래스 문제'라고 부른다.
  */
 public class NightlyDiscountPhone extends Phone {
 
@@ -19,8 +30,8 @@ public class NightlyDiscountPhone extends Phone {
 
   private Money nightlyAmount;
 
-  public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds) {
-    super(regularAmount, seconds);
+  public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds, double taxRate) {
+    super(regularAmount, seconds, taxRate);
     this.nightlyAmount = nightlyAmount;
   }
 
@@ -53,6 +64,6 @@ public class NightlyDiscountPhone extends Phone {
       }
     }
 
-    return result.minus(nightlyFee);
+    return result.minus(nightlyFee.plus(nightlyFee.times(super.getTaxRate())));
   }
 }
