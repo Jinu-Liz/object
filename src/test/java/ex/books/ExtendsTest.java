@@ -1,13 +1,15 @@
 package ex.books;
 
+import ex.books.chapter_10.InstrumentedHashSet;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StackTest {
+public class ExtendsTest {
 
   @Test
   void stackTest() {
@@ -33,5 +35,12 @@ public class StackTest {
 
     // getProperty는 반환값의 타입이 String이 아닐 경우, null을 반환하도록 구현되어있음.
     assertEquals("C", properties.getProperty("Dennis Ritchie"));  // 에러
+  }
+
+  @Test
+  void hashsetTest() {
+    // addCount의 값이 3이 아니라 6이 됨.
+    InstrumentedHashSet<String> languages = new InstrumentedHashSet<>();
+    languages.addAll(Arrays.asList("Java", "Ruby", "Scala"));
   }
 }
