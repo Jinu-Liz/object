@@ -4,11 +4,9 @@ import ex.books.chapter_10.Call;
 import ex.books.common.Money;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 
-public class NightlyDiscountPhone extends AbstractPhone {
+public class NightlyDiscountPhone extends Phone {
 
   private static final int LATE_NIGHT_HOUR = 22;
 
