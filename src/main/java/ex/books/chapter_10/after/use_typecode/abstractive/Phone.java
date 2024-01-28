@@ -21,7 +21,22 @@ import java.util.List;
  */
 public abstract class Phone {
 
+  private double taxRate;
+
   private List<Call> calls = new ArrayList<>();
+
+  /**
+   * 인스턴스 변수 추가 후, 값을 초기화하는 생성자를 추가.
+   * 이로 인해 자식 클래스들의 생성자 역시 인스턴스 변수를 초기화하기 위해 수정해야한다.
+   * 클래스는 메서드 뿐만 아니라 인스턴스 변수도 함께 포함하기 때문에,
+   * 상속은 부모 클래스가 구현한 행동 뿐만 아니라 인스턴스 변수에 대해서도 결합되게 만든다.
+   * 결과적으로 책임을 아무리 잘 분리하더라도 인스턴스 변수의 추가는 상속 계층 전반에 걸친 변경을 유발한다.
+   *
+   * 그러나 인스턴스 초기화 로직을 변경하는 것이 자식 클래스에 코드를 중복시키는 것보다는 현명한 선택이다.
+   */
+  public Phone(double taxRate) {
+    this.taxRate = taxRate;
+  }
 
   public Money calculateFee() {
     Money result = Money.ZERO;
@@ -30,7 +45,7 @@ public abstract class Phone {
       result = result.plus(calculateCallFee(call));
     }
 
-    return result;
+    return result.plus(result.times(taxRate));
   }
 
   /**
