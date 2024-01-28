@@ -10,12 +10,15 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
   @Override
   public boolean add(E e) {
     this.addCount++;
+
+    System.out.println("addCount = " + addCount);
     return super.add(e);
   }
 
   @Override
   public boolean addAll(Collection<? extends E> c) {
     this.addCount += c.size();
-    return super.addAll(c);
+
+    return super.addAll(c);   // addAll 내부에서 add를 호출한다.
   }
 }

@@ -1,6 +1,7 @@
 package ex.books;
 
 import ex.books.chapter_10.InstrumentedHashSet;
+import ex.books.chapter_10.InstrumentedHashSet2;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -39,8 +40,11 @@ public class ExtendsTest {
 
   @Test
   void hashsetTest() {
-    // addCount의 값이 3이 아니라 6이 됨.
+    // addAll에서 add를 호출하기 때문에, addCount의 값이 3이 아니라 6이 됨.
     InstrumentedHashSet<String> languages = new InstrumentedHashSet<>();
     languages.addAll(Arrays.asList("Java", "Ruby", "Scala"));
+
+    InstrumentedHashSet2<String> languages2 = new InstrumentedHashSet2<>();
+    languages2.addAll(Arrays.asList("Java", "Ruby", "Scala"));
   }
 }
