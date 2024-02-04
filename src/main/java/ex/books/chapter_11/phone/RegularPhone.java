@@ -1,7 +1,5 @@
 package ex.books.chapter_11.phone;
 
-import ex.books.chapter_10.Call;
-import ex.books.chapter_10.after.use_typecode.abstractive.Phone;
 import ex.books.common.Money;
 
 import java.time.Duration;
@@ -13,8 +11,7 @@ public class RegularPhone extends Phone {
 
   private Duration seconds;
 
-  public RegularPhone(Money amount, Duration seconds, double taxRate) {
-    super(taxRate);
+  public RegularPhone(Money amount, Duration seconds) {
     this.amount = amount;
     this.seconds = seconds;
   }

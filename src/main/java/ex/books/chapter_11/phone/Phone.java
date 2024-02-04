@@ -1,6 +1,5 @@
 package ex.books.chapter_11.phone;
 
-import ex.books.chapter_10.Call;
 import ex.books.common.Money;
 
 import java.util.ArrayList;
