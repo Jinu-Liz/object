@@ -22,11 +22,11 @@ public class TaxableNightlyDiscountPhone extends NightlyDiscountPhone {
   protected Money calculateCallFee(Call call) {
     Money fee = super.calculateCallFee(call);
 
-    return fee.plus(fee.times(taxRate));
+    return fee.plus(fee.times(this.taxRate));
   }
 
   @Override
   protected Money afterCalculated(Money fee) {
-    return fee.plus(fee.times(taxRate));
+    return fee.plus(fee.times(this.taxRate));
   }
 }
