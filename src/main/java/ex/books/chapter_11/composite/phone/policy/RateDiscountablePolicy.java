@@ -6,7 +6,7 @@ public class RateDiscountablePolicy extends AdditionalRatePolicy {
 
   private Money discountAmount;
 
-  public RateDiscountablePolicy(RatePolicy next, Money discountAmount) {
+  public RateDiscountablePolicy(Money discountAmount, RatePolicy next) {
     super(next);
     this.discountAmount = discountAmount;
   }

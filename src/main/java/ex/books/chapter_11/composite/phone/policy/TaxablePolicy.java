@@ -6,7 +6,7 @@ public class TaxablePolicy extends AdditionalRatePolicy {
 
   private double taxRatio;
 
-  public TaxablePolicy(RatePolicy next, double taxRatio) {
+  public TaxablePolicy(double taxRatio, RatePolicy next) {
     super(next);
     this.taxRatio = taxRatio;
   }
