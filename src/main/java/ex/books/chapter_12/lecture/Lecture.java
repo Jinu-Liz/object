@@ -39,7 +39,16 @@ public class Lecture {
       .count();
   }
 
+  public String stats() {
+    return String.format("Title: %s, Evaluation Method: %s", title, getEvaluationMethod());
+  }
+
+  public String getEvaluationMethod() {
+    return "Pass or Fail";
+  }
+
   private long failCount() {
     return this.scores.size() - passCount();
   }
+
 }
