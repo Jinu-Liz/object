@@ -1,4 +1,4 @@
-package ex.books.chapter_13;
+package ex.books.chapter_13.before;
 
 /**
  * 펭귄은 새지만 날 수 없다.

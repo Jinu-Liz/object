@@ -1,4 +1,4 @@
-package ex.books.chapter_13;
+package ex.books.chapter_13.before;
 
 public class Client2 {
   public static void main(String[] args) {

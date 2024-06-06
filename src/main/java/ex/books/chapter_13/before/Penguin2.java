@@ -1,4 +1,4 @@
-package ex.books.chapter_13;
+package ex.books.chapter_13.before;
 
 public class Penguin2 extends Bird {
 
